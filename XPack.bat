@@ -1,0 +1,1 @@
+xcopy /r /d /i /s /y /exclude:excludedFileList.txt C:\Workplace\AiDollar\Web C:\Workplace\AiDollar\WebDist

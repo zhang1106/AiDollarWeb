@@ -1,0 +1,7 @@
+.ts
+.txt
+.bat
+.gitignore
+.md
+\.vs\
+\.vscode\

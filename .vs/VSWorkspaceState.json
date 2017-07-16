@@ -1,7 +1,12 @@
 {
   "ExpandedNodes": [
-    ""
+    "\\api\\products",
+    "\\app",
+    "\\app\\assets",
+    "\\app\\assets\\images",
+    "\\app\\home",
+    "\\build",
+    "\\typings\\globals"
   ],
-  "SelectedNode": "\\index.html",
   "PreviewInSolutionExplorer": false
 }
