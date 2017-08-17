@@ -1,7 +1,15 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\node_modules\\bootstrap\\dist",
+    "\\node_modules\\bootstrap\\dist\\css",
+    "\\node_modules\\bootstrap\\dist\\js",
+    "\\node_modules\\jquery",
+    "\\node_modules\\jquery\\dist",
+    "\\src\\app\\home",
+    "\\src\\app\\term",
+    "\\src\\assets"
   ],
-  "SelectedNode": "\\index.html",
+  "SelectedNode": "\\src",
   "PreviewInSolutionExplorer": false
 }
