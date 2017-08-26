@@ -1,10 +1,7 @@
 ﻿.navbar {
   margin-bottom: 0;
-}
-
-.navbar-default {
-  background-color: white;
-  border:0
+  padding-bottom: 3px;
+  padding-top: 3px;
 }
 
 header {
@@ -12,14 +9,6 @@ header {
   color: #333;
   padding: 0px;
   text-align: center;
-}
-
- 
-
-.navbar-inverse {
-  background-color: lightgrey;
-  height: 45px;
-  border: 0
 }
 
 aside {
