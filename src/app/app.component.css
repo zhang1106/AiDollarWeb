@@ -10,13 +10,52 @@ header {
   padding: 0px;
   text-align: center;
 }
-
-aside {
-  background-color: white;
-  text-align: center;
-  padding-top: 40px;
+section {
+  margin-top: 10px;
 }
 
+aside {
+  background-color: #f8f9fa !important;
+  text-align: center;
+  padding-top: 10px;
+}
+
+aside ul {
+  text-align: left;
+}
+
+.rightside {
+  background-color: #f8f9fa !important;
+  bottom: -1px;
+}
+
+.note {
+  background-color: antiquewhite;
+  border-radius: 10px;
+}
+
+.range-list {
+  padding-bottom: 20px;
+  padding-top: 10px;
+}
+
+.range-list b {
+  margin-bottom: 10px;
+  color: darkorange;
+  font-weight: bold;
+}
+
+.range-title {
+  color: #30adfc;
+}
+
+@media (min-width:768px) {
+  .container-height { display: table; }
+
+  .row-height { display: table-row; }
+
+  .column-height { display: table-cell; }
+}
 
 
 
