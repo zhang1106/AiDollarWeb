@@ -10,8 +10,7 @@ export class AiDataService {
   getPortfolio(): Observable<IPortfolio> {
     return this._http.get(this._dataUrl)
       .map((response: Response) => <IPortfolio>response.json())
-      .do(data => console.log("All " + JSON.stringify(data)))
-      .catch(this.handleError);
+     .catch(this.handleError);
 
   }
 

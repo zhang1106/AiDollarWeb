@@ -1,6 +1,7 @@
 ﻿import { Component, OnInit } from '@angular/core';
 import { AiDataService } from '../service/ai-data.service';
-import {IPortfolio} from '../service/portfolio';
+import { IPortfolio } from '../service/portfolio';
+import {IHolding} from '../service/portfolio';
 
 @Component({
   selector: 'ai-home',
