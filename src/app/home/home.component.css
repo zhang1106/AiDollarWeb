@@ -12,3 +12,43 @@ input {
   color: green;
 }
 
+section {
+  margin-top: 10px;
+}
+
+.rightside {
+  background-color: #f8f9fa !important;
+  bottom: -1px;
+}
+
+aside {
+  background-color: #f8f9fa !important;
+  text-align: center;
+  padding-top: 10px;
+}
+
+aside td {
+  padding-left: 50px;
+}
+
+.guru {
+  text-align: left;
+  font-size: medium;
+
+}
+
+@media (min-width:768px) {
+  .container-height {
+    display: table;
+  }
+
+  .row-height {
+    display: table-row;
+  }
+
+  .column-height {
+    display: table-cell;
+  }
+}
+
+

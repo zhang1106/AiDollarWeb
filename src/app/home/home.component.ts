@@ -1,8 +1,8 @@
 ﻿import { Component, OnInit } from '@angular/core';
-import { Router, ActivatedRoute, Params } from '@angular/router';
+import { ActivatedRoute, Params } from '@angular/router';
 import { AiDataService } from '../service/ai-data.service';
 import { IPortfolio } from '../service/portfolio';
-import {IHolding} from '../service/portfolio';
+import {IGuru} from '../service/guru';
 
 @Component({
   selector: 'ai-home',
@@ -13,6 +13,7 @@ import {IHolding} from '../service/portfolio';
 export class HomeComponent implements OnInit {
 
   Portfolio: IPortfolio;
+  Gurus: IGuru[];
   Cik: string
   ErrorMessage: string;
 
@@ -23,20 +24,27 @@ export class HomeComponent implements OnInit {
       this.Cik = params['cik'];
       console.log(this.Cik);
     });
+
     this._aiService.getPortfolio()
       .subscribe(
       portfolio => {
-        console.log(this.Cik);
-          for (var i = 0; i < portfolio.length; i++) {
+         for (var i = 0; i < portfolio.length; i++) {
             var p = portfolio[i];
             if (p.Cik == this.Cik) {
               this.Portfolio = p;
-              console.log(p.Owner);
               break;
             }
           }
         },
 
+        error => this.ErrorMessage = error
+      );
+
+    this._aiService.getGurus()
+      .subscribe(
+        gurus => {
+          this.Gurus = gurus;
+        },
         error => this.ErrorMessage = error
       );
   }

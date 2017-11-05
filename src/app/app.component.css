@@ -16,7 +16,7 @@ section {
 
 aside {
   background-color: #f8f9fa !important;
-  text-align: center;
+  text-align: left;
   padding-top: 10px;
 }
 
@@ -24,9 +24,11 @@ aside ul {
   text-align: left;
 }
 
+
 .rightside {
   background-color: #f8f9fa !important;
   bottom: -1px;
+  text-align: left
 }
 
 .note {
