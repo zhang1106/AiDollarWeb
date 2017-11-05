@@ -5,8 +5,9 @@ import { TermComponent } from './term/term.component';
 import {InfoComponent} from './info/info.component'
 
 const routes: Routes = [
-  {path: '', redirectTo:'home',pathMatch:'full'},
-  {path: 'home', component: HomeComponent },
+  { path: '', redirectTo: 'home/1067983', pathMatch: 'full' },
+  { path: 'home', redirectTo: 'home/1067983', pathMatch: 'full' },
+  {path: 'home/:cik', component: HomeComponent },
   {path: 'term', component: TermComponent },
   {path: 'info', component:InfoComponent}
 ];

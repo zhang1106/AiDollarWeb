@@ -8,6 +8,7 @@
 }
 
 export interface IPortfolio {
+ Cik:string;
  Owner: string;
  ReportedDate0: Date;
  ReportedDate1: Date;

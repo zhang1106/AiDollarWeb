@@ -5,15 +5,13 @@ import {IPortfolio } from './portfolio';
 
 @Injectable()
 export class AiDataService {
-  private _dataUrl = 'http://localhost:9177/api/Portfolio/GetPortfolio?cik=0001067983';
+  private _dataUrl = 'assets/portfolios.json';
   constructor(private _http: Http) { }
-  getPortfolio(): Observable<IPortfolio> {
+  getPortfolio(): Observable<IPortfolio[]> {
     return this._http.get(this._dataUrl)
-      .map((response: Response) => <IPortfolio>response.json())
-     .catch(this.handleError);
-
+      .map((response: Response) => <IPortfolio[]>response.json())
+      .catch(this.handleError);
   }
-
   private handleError(error: Response) {
     console.error(error);
     return Observable.throw(error.json().error || "Sever error");
