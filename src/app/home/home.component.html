@@ -30,7 +30,7 @@
     <tr *ngFor="let hold of Portfolio.Holdings">
       <td>{{hold.Issuer}}</td>
       <td>{{hold.Ticker}}</td>
-      <td>{{hold.Cusip}}</td>
+      <td><a href="security/{{hold.Cusip}}">{{hold.Cusip}}</a></td>
       <td>{{hold.Share0 | number:'.0'}}</td>
       <td [ngClass]="{'red':hold.Share1<hold.Share0, 'green' :hold.Share1>hold.Share0}">{{hold.Share1 | number:'.0'}}</td>
       <td [ngClass]="{'red':hold.Share2<hold.Share1, 'green':hold.Share2>hold.Share1}">{{hold.Share2 | number:'.0'}}</td>
