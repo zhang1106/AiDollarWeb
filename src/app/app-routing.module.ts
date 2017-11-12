@@ -9,7 +9,7 @@ const routes: Routes = [
   { path: '', redirectTo: 'home/1067983', pathMatch: 'full' },
   { path: 'home', redirectTo: 'home/1067983', pathMatch: 'full' },
   { path: 'home/:cik', component: HomeComponent },
-  { path: 'security', redirectTo: 'security/aapl', pathMatch: 'full' },
+  { path: 'security', redirectTo: 'security/037833100', pathMatch: 'full' },
   { path: 'security/:cusip', component: SecurityGuruComponent },
   {path: 'term', component: TermComponent },
   {path: 'info', component:InfoComponent}
@@ -19,4 +19,6 @@ const routes: Routes = [
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {
+
+}

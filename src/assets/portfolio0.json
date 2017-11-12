@@ -1,0 +1,23 @@
+﻿[
+  {
+    "Cik": "1036325",
+    "Owner": "DAVIS SELECTED ADVISERS",
+    "ReportedDate0": "2016-08-12T14:49:06Z",
+    "ReportedDate1": "2016-11-14T14:46:13Z",
+    "ReportedDate2": "2017-02-13T13:42:08Z",
+    "ReportedDate3": "2017-05-12T19:59:04Z",
+    "ReportedDate4": "2017-08-09T19:34:07Z",
+    "Holdings": [
+      {
+        "Issuer": "Encana Corporation",
+        "Ticker": "ECA",
+        "Cusip": "292505104",
+        "Share0": 73364585,
+        "Share1": 75030451,
+        "Share2": 71084413,
+        "Share3": 69328046,
+        "Share4": 67572006
+      }
+    ]
+  }
+]

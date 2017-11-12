@@ -1,5 +1,7 @@
 ﻿export interface IHolding {
   Issuer: string;
+  Ticker: string;
+  Cusip: string;
   Share0: number;
   Share1: number;
   Share2: number;
