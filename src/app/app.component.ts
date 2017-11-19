@@ -2,7 +2,6 @@
 import { HttpModule } from '@angular/http';
 import { Router } from '@angular/router';
 import 'rxjs/Rx';
-import { AiDataService } from './service/ai-data.service';
 
 declare var jQuery: any;
 
@@ -10,16 +9,14 @@ declare var jQuery: any;
   selector: 'ai-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
-  providers: [AiDataService, HttpModule]
+  providers: [HttpModule]
 })
 
 export class AppComponent {
   title = 'ai';
-  Cusip: string;
 
-  constructor(private router : Router){}
-
-  getHoldings() {
-    this.router.navigate(['security/' + this.Cusip]);
+  constructor(private router: Router) {
+  
   }
+   
 }

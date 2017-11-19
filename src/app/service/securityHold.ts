@@ -7,12 +7,23 @@
   Q3: Number;  
   Q4:number; 
 }
- 
 
-export interface ISecurityHolding {
- Ticker:string
+export interface IHoldIdxByCusip {
+  [Cusip:string]: IHoldByCusip;
+}
+
+export interface IHoldByCusip{
  Cusip:string;
- Issuer:string;
  Holding: ISecurityHoldingUnit[];
  
+}
+
+export interface ISecurity {
+  Cusip: string;
+  Issuer: string;
+  Ticker:string;
+}
+
+export interface ITickerToCusip {
+  [Ticker:string]: string
 }

@@ -9,14 +9,20 @@
   Share4: number;
 }
 
-export interface IPortfolio {
- Cik:string;
- Owner: string;
- ReportedDate0: Date;
- ReportedDate1: Date;
- ReportedDate2: Date;
- ReportedDate3: Date;
- ReportedDate4: Date;
- Holdings: IHolding[]; 
+export interface IHoldIdxByCik {
+  [Cik: string]: IHoldByCik;
 }
+
+export interface IHoldByCik {
+  Cik: string;
+  Owner: string;
+  ReportedDate0: Date;
+  ReportedDate1: Date;
+  ReportedDate2: Date;
+  ReportedDate3: Date;
+  ReportedDate4: Date;
+  Holdings: IHolding[];
+}
+
+ 
 

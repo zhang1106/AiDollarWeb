@@ -1,75 +1,51 @@
-﻿import { Component, OnInit } from '@angular/core';
+﻿import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
 import { AiDataService } from '../service/ai-data.service';
-import { IPortfolio, IHolding } from '../service/portfolio';
-import {IGuru} from '../service/guru';
+import { IHoldIdxByCik, IHoldByCik } from '../service/portfolio';
+import { ISubscription } from 'rxjs/Subscription';
+import { IGuru } from '../service/guru';
  
-
 @Component({
   selector: 'ai-home',
   templateUrl: './home.component.html',
-  styleUrls: ['./home.component.css']
+  styleUrls: ['./home.component.css'],
+  
 })
 
-export class HomeComponent implements OnInit {
+export class HomeComponent implements OnDestroy, OnInit {
 
-  Portfolio: IPortfolio;
   Gurus: IGuru[];
-  Cik: string;
-  Holdings:IHolding[];
+  Cache: IHoldIdxByCik;
+  Portfolio: IHoldByCik;
   ErrorMessage: string;
+  Subscription: ISubscription;
+  Cik:string;
 
-  constructor(private _aiService: AiDataService, private activatedRoute: ActivatedRoute) {
-    //this.Holdings = [      {
-    //    "Issuer": "Encana Corporation",
-    //    "Ticker": "ECA",
-    //    "Cusip": "292505104",
-    //    "Share0": 73364585,
-    //    "Share1": 75030451,
-    //    "Share2": 71084413,
-    //    "Share3": 69328046,
-    //    "Share4": 67572006
-    //  }
-    //];
-    //this.Portfolio = {
-    //    "Cik": "1036325",
-    //    "Owner": "DAVIS SELECTED ADVISERS",
-    //    "ReportedDate0": new Date("2016-08-12T14:49:06Z"),
-    //    "ReportedDate1": new Date("2016-11-14T14:46:13Z"),
-    //    "ReportedDate2": new Date("2017-02-13T13:42:08Z"),
-    //    "ReportedDate3": new Date("2017-05-12T19:59:04Z"),
-    //    "ReportedDate4": new Date("2017-08-09T19:34:07Z"),
-    //    "Holdings": this.Holdings
-        
-    //};
+  constructor(private _aiService: AiDataService,   private activatedRoute: ActivatedRoute) {
+    this.Cik = "1067983";
+    this.Portfolio =
+    {
+      Cik: '',
+      Owner: '',
+      ReportedDate0: null,
+      ReportedDate1: null,
+      ReportedDate2: null,
+      ReportedDate3: null,
+      ReportedDate4: null,
+      Holdings:[]
+    };
   }
 
-  ngOnInit() { // subscribe to router event
-    console.log("s1");
-    this.activatedRoute.params.subscribe((params: Params) => {
-      this.Cik = params['cik'];
-      console.log(this.Cik);
-    });
 
-   
+
+  ngOnDestroy(): void {
+     this.Subscription.unsubscribe();
+  }
   
-    this._aiService.getPortfolio()
-      .subscribe(
-      portfolio => {
-         console.log("get portfolio");
-         for (var i = 0; i < portfolio.length; i++) {
-            var p = portfolio[i];
-            if (p.Cik == this.Cik) {
-              this.Portfolio = p;
-              break;
-            }
-         }
-        console.log(this.Portfolio.Owner);
-        },
-
-        error => this.ErrorMessage = error
-      );
-     
+  ngOnInit() { // subscribe to router event
+    this.activatedRoute.params.subscribe((params: Params) => {
+      if (params['cik']) this.Cik = params['cik'];
+    });
 
     this._aiService.getGurus()
       .subscribe(
@@ -79,6 +55,20 @@ export class HomeComponent implements OnInit {
         },
         error => this.ErrorMessage = error
       );
+
+      this.Subscription = this._aiService.getHoldByCik()
+        .subscribe(
+          portfolioIdx => {
+            this.Cache = portfolioIdx;
+            this.Portfolio = this.Cache[this.Cik];
+         },
+          error => this.ErrorMessage = error
+        );
+   }
+
+  ShowDetail(Cik: string): void {
+    this.Portfolio = this.Cache[Cik];
+    console.log("Container:"+this.Portfolio.Owner);
   }
   
 }

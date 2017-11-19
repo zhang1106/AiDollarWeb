@@ -1,4 +1,4 @@
-export interface IGuru
+﻿export interface IGuru
 {
     Owner: string,
     Fund: string,

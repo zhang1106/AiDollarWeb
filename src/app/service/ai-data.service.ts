@@ -1,40 +1,50 @@
 ﻿import { Injectable } from '@angular/core';
 import {Http, Response} from '@angular/http';
 import {Observable} from 'rxjs/Observable';
-import { IPortfolio } from './portfolio';
+import {IHoldIdxByCik } from './portfolio';
 import { IGuru } from './guru';
-import {ISecurityHolding} from './securityHold';
+import { IHoldIdxByCusip,ISecurity} from './securityHold';
 
 @Injectable()
 export class AiDataService {
-  private _holdingUrl = 'assets/portfolios.json';
-  private _holding0Url = 'assets/portfolio0.json';
-  private _guruUrl = 'assets/guru.json';
-  private _secHoldUrl = 'assets/securityHolding.json';
+  private _holdByCik = 'assets/holdByCik.json';
+  private _guru = 'assets/guru.json';
+  private _holdByCusip = 'assets/holdByCusip.json';
+  private _security = 'assets/security.json';
+  private _tickerToCusip = 'assets/tickerToCusip.json';
 
-  constructor(private _http: Http) { }
-
+  constructor(private _http: Http) {
+    console.log("AiDataService started");
+  }
+  
   getGurus(): Observable<IGuru[]> {
-    return this._http.get(this._guruUrl)
+    return this._http.get(this._guru)
       .map((response: Response) => <IGuru[]>response.json())
       .catch(this.handleError);
   }
+
+  getSecuriites(): Observable<ISecurity[]> {
+    return this._http.get(this._security)
+      .map((response: Response) => <ISecurity[]>response.json())
+      .catch(this.handleError);
+  }
+
+  getTickerToCusip<ITickerToCusip>() {
+    return this._http.get(this._tickerToCusip)
+      .map((response: Response) => <ITickerToCusip>response.json())
+      .catch(this.handleError);
+  }
   
-  getPortfolio0(): Observable<IPortfolio[]> {
-    return this._http.get(this._holding0Url)
-      .flatMap((response: Response) => <IPortfolio[]>response.json())
-      .catch(this.handleError);
-  }
+  getHoldByCik(): Observable<IHoldIdxByCik> {
+      return this._http.get(this._holdByCik)
+      .map((response: Response) => <IHoldIdxByCik>response.json())
+      .catch(this.handleError)
+       ;
+   }
 
-  getPortfolio(): Observable<IPortfolio[]> {
-    return this._http.get(this._holdingUrl)
-      .map((response: Response) => <IPortfolio[]>response.json())
-      .catch(this.handleError);
-  }
-
-  getSecurtiyPortfolio(): Observable<ISecurityHolding[]> {
-    return this._http.get(this._secHoldUrl)
-      .map((response: Response) => <ISecurityHolding[]>response.json())
+  getHoldByCussip(): Observable<IHoldIdxByCusip> {
+    return this._http.get(this._holdByCusip)
+      .map((response: Response) => <IHoldIdxByCusip>response.json())
       .catch(this.handleError);
   }
 
