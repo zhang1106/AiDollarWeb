@@ -17,3 +17,42 @@ body {
 }
 
 
+
+input {
+  margin-top: 5px;
+  margin-right: 3px;
+}
+
+section {
+  margin-top: 10px;
+}
+
+.rightside {
+  background-color: #f8f9fa !important;
+  bottom: -1px;
+}
+
+aside {
+  background-color: #f8f9fa !important;
+  text-align: center;
+  padding-top: 10px;
+}
+
+  aside td {
+    padding-left: 50px;
+  }
+
+ 
+@media (min-width:768px) {
+  .container-height {
+    display: table;
+  }
+
+  .row-height {
+    display: table-row;
+  }
+
+  .column-height {
+    display: table-cell;
+  }
+}

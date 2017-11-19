@@ -3,7 +3,7 @@ import {Http, Response} from '@angular/http';
 import {Observable} from 'rxjs/Observable';
 import {IHoldIdxByCik } from './portfolio';
 import { IGuru } from './guru';
-import { IHoldIdxByCusip,ISecurity} from './securityHold';
+import { IHoldIdxByCusip,ISecurity,ITickerToCusip} from './securityHold';
 
 @Injectable()
 export class AiDataService {
@@ -29,7 +29,7 @@ export class AiDataService {
       .catch(this.handleError);
   }
 
-  getTickerToCusip<ITickerToCusip>() {
+  getTickerToCusip(): Observable<ITickerToCusip> {
     return this._http.get(this._tickerToCusip)
       .map((response: Response) => <ITickerToCusip>response.json())
       .catch(this.handleError);
