@@ -1,6 +1,7 @@
 ﻿import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpModule } from '@angular/http';
+import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -28,7 +29,7 @@ import { GuruDetailComponent } from './home/guru-detail/guru-detail.component';
     FormsModule,
     ReactiveFormsModule
   ],
-  providers: [AiDataService],
+  providers: [AiDataService, { provide: LocationStrategy, useClass: HashLocationStrategy }],
   bootstrap: [AppComponent]
 })
 export class AppModule {

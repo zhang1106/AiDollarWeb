@@ -25,7 +25,7 @@
         </thead>
         <tbody>
         <tr *ngFor="let hold of SecurityHolding.Holding">
-          <td><a href="home/{{hold.Cik}}" title="Guru's holding">{{hold.Owner}}</a></td>
+          <td><a routerLink="/home/{{hold.Cik}}/o" title="Guru's holding">{{hold.Owner}}</a></td>
           <td>{{hold.Q4 | number:'.0'}}</td>
           <td [ngClass]="{'red':hold.Q3<hold.Q4, 'green' :hold.Q3>hold.Q4}">{{hold.Q3 | number:'.0'}}</td>
           <td [ngClass]="{'red':hold.Q2<hold.Q3, 'green' :hold.Q2>hold.Q3}">{{hold.Q2 | number:'.0'}}</td>

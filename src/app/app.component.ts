@@ -38,10 +38,6 @@ export class AppComponent implements OnInit {
   } 
 
   GetHoldings() {
-      //this.router.navigate([home])
-    //console.log(JSON.stringify(this.TickerToCusip));
-     
-    //console.log(this.TickerToCusip[this.Symbol]);
     if (this.TickerToCusip[this.Symbol]) {
       this.router.navigate(['security/' + this.TickerToCusip[this.Symbol] + "/" + this.Symbol]);
     }
