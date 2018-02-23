@@ -1,0 +1,35 @@
+﻿<div class="row">
+<aside class="col-sm-2 col-lg-2"></aside>
+<section class="col-sm-10 col-lg-10">
+    
+  <h5>Latest Significan Inside Trades</h5>
+  <table class="table table-striped, table-bordered">
+    <thead>
+    <tr>
+      <th>Issuer</th>
+      <th>Symbol</th>
+      <th>Reporter</th>
+      <th>Role</th>
+      <th>TransactionCode</th>
+      <th>Amount</th>
+      <th>Price</th>
+      <th>RemainAmount</th>
+      <th>TransactionDate</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let trade of  Trades">
+      <td>{{trade.Issuer}}</td>
+      <td>{{trade.Symbol}}</td>
+      <td>{{trade.Reporter}}</td>
+      <td>{{trade.Role}}</td>
+      <td>{{trade.TransactionCode}}</td>
+      <td>{{trade.Amount | number:'.0'}}</td>
+      <td>{{trade.Price | number:'.2'}}</td>
+      <td>{{trade.RemainAmount | number:'.0'}}</td>
+      <td>{{trade.TransactionDate}}</td>
+    </tr>
+    </tbody>
+  </table>
+   
+</section>

@@ -3,13 +3,9 @@
     "",
     "\\src",
     "\\src\\app",
-    "\\src\\app\\home",
-    "\\src\\app\\home\\guru-detail",
-    "\\src\\app\\info",
-    "\\src\\app\\security-guru",
-    "\\src\\app\\service",
-    "\\src\\app\\term"
+    "\\src\\app\\login",
+    "\\src\\app\\service"
   ],
-  "SelectedNode": "\\src\\app\\home\\home.component.html",
+  "SelectedNode": "\\src\\app\\service\\auth-service.service.ts",
   "PreviewInSolutionExplorer": false
 }

@@ -1,6 +1,7 @@
 ﻿import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
 import { AiDataService } from '../service/ai-data.service';
+import { PortfolioService } from '../service/portfolio.service';
 import { IHoldIdxByCusip, IHoldByCusip, ISecurity } from '../service/securityHold';
 
 @Component({
@@ -14,12 +15,14 @@ export class SecurityGuruComponent implements OnInit {
   SecurityHolding: IHoldByCusip;
   Cusip: string;
   Issuer: string;
+  Ticker: string;
   Securities:ISecurity[];
   ErrorMessage: string;
 
-  constructor(private _aiService: AiDataService, private activatedRoute: ActivatedRoute) {
+  constructor(private _aiService: AiDataService, private _portfolioServive:PortfolioService, private activatedRoute: ActivatedRoute) {
     this.Cusip = '037833100';
     this.Issuer = 'APPLE INC';
+    this.Ticker = 'AAPL';
     this.SecurityHolding = { Cusip: '037833100', Holding: [] };
 
   }
@@ -51,11 +54,17 @@ export class SecurityGuruComponent implements OnInit {
       );
   }
 
-  ShowDetail(cusip: string, issuer:string) {
+  ShowDetail(cusip: string, issuer:string, ticker:string) {
     this.Cusip = cusip;
     this.Issuer = issuer;
+    this.Ticker = ticker;
     this.SecurityHolding = this.SecurityHoldings[this.Cusip];
     console.log("hello" + this.SecurityHolding.Cusip);
+  }
+
+  AddToMyPortfolio() {
+    console.log(this.Ticker);
+    this._portfolioServive.Add(this.Ticker);
   }
 
 }

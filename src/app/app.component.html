@@ -14,6 +14,9 @@
         <li class="nav-item active">
           <a class="nav-link" routerLink="/security" routerLinkActive="active">Stock By Guru</a>
         </li>
+        <li class="nav-item active">
+          <a class="nav-link" routerLink="/insideTrades" routerLinkActive="active">Inside Trades</a>
+        </li>
         <li><a  class="nav-link" routerLink="/term" routerLinkActive="active">Terms</a></li>
         <li>  <address>
                   <a class="nav-link" href="mailto:quoteaidollar@gmail.com">Contact US</a>
@@ -22,8 +25,9 @@
         
       </ul>
       <form class="form-inline my-2 my-lg-0">
-        <input class="form-control mr-sm-2" [(ngModel)]="Symbol" name="Symbol" type="text" placeholder="Symbol" aria-label="Search">
-        <button class="btn btn-outline-success my-2 my-sm-0" type="submit" (click)="GetHoldings()">Search For AI Info</button>
+        <input class="form-control mr-sm-2" [(ngModel)]="Email" name="email" type="text" placeholder="email" aria-label="email">
+        <input class="form-control mr-sm-2" [(ngModel)]="Password" name="password" type="text" placeholder="password" aria-label="password">
+        <button class="btn btn-outline-success my-2 my-sm-0" type="submit" (click)="SignIn()">Sign In</button>
       </form>
     </div>
   </nav>

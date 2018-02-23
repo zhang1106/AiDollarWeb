@@ -3,7 +3,8 @@ import {Http, Response} from '@angular/http';
 import {Observable} from 'rxjs/Observable';
 import {IHoldIdxByCik } from './portfolio';
 import { IGuru } from './guru';
-import { IHoldIdxByCusip,ISecurity,ITickerToCusip} from './securityHold';
+import { IHoldIdxByCusip, ISecurity, ITickerToCusip } from './securityHold';
+import {IInsideTrade} from './insideTrade';
 
 @Injectable()
 export class AiDataService {
@@ -12,11 +13,18 @@ export class AiDataService {
   private _holdByCusip = 'assets/holdByCusip.json';
   private _security = 'assets/security.json';
   private _tickerToCusip = 'assets/tickerToCusip.json';
+  private _insideTrade = 'assets/f4.json';
 
   constructor(private _http: Http) {
     console.log("AiDataService started");
   }
-  
+
+  getInsideTrades(): Observable<IInsideTrade[]> {
+    return this._http.get(this._insideTrade)
+      .map((response: Response) => <IInsideTrade[]>response.json())
+      .catch(this.handleError);
+  }
+
   getGurus(): Observable<IGuru[]> {
     return this._http.get(this._guru)
       .map((response: Response) => <IGuru[]>response.json())

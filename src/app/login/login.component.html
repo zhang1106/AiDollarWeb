@@ -1,0 +1,19 @@
+﻿<form  (ngSubmit)="onSubmit()" >
+  <div class="form-group">
+    <label for="name">Name</label>
+    <input type="text" class="form-control" id="name" required>
+  </div>
+ 
+  <div class="form-group">
+    <label for="userid">Email</label>
+    <input type="text" class="form-control" id="userid" [(ngModel)]="userid"  [ngModelOptions]="{standalone: true}">
+  </div>
+  
+  <div class="form-group">
+    <label for="password">Password</label>
+    <input type="password" class="form-control" id="password" [(ngModel)]="password" [ngModelOptions]="{standalone: true}" >
+  </div>
+ 
+  <button type="submit" class="btn btn-success" (click)="onLogin">Submit</button>
+ 
+</form>

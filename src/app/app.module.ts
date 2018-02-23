@@ -11,7 +11,11 @@ import { TermComponent } from './term/term.component';
 import { InfoComponent} from './info/info.component';
 import { SecurityGuruComponent } from './security-guru/security-guru.component';
 import { AiDataService } from './service/ai-data.service';
+import { PortfolioService } from './service/portfolio.service';
 import { GuruDetailComponent } from './home/guru-detail/guru-detail.component';
+import { InsideTradeComponent } from './inside-trade/inside-trade.component';
+import { LoginComponent } from './login/login.component';
+import { LocalStorageModule } from 'angular-2-local-storage';
 
 @NgModule({
   declarations: [
@@ -21,15 +25,21 @@ import { GuruDetailComponent } from './home/guru-detail/guru-detail.component';
     InfoComponent,
     SecurityGuruComponent,
     GuruDetailComponent,
+    InsideTradeComponent,
+    LoginComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    LocalStorageModule.withConfig({
+      prefix: 'ai-dolloar',
+      storageType: 'localStorage'
+    })
   ],
-  providers: [AiDataService, { provide: LocationStrategy, useClass: HashLocationStrategy }],
+  providers: [AiDataService, PortfolioService, { provide: LocationStrategy, useClass: HashLocationStrategy }],
   bootstrap: [AppComponent]
 })
 export class AppModule {
