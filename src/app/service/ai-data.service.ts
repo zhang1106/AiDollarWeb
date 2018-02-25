@@ -14,9 +14,17 @@ export class AiDataService {
   private _security = 'assets/security.json';
   private _tickerToCusip = 'assets/tickerToCusip.json';
   private _insideTrade = 'assets/f4.json';
+  private _quoteUri = 'https://www.alphavantage.co/query?function=BATCH_STOCK_QUOTES&apikey=LLAX4346OCJU5UF2&symbols=';
 
   constructor(private _http: Http) {
     console.log("AiDataService started");
+  }
+
+  getQuote(tickers: string) {
+    var quote = this._quoteUri + tickers;
+    return this._http.get(quote)
+      .map((response: Response) => response.json())
+      ;
   }
 
   getInsideTrades(): Observable<IInsideTrade[]> {

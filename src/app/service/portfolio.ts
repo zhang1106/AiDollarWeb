@@ -56,6 +56,22 @@ export class Position {
   }
 }
 
+export class QuoteByTicker {
+  [Ticker:string]:Quote;
+}
+export class Quote {
+  symbol: string;
+  price: number;
+  volume: number;
+  timeStamp: Date;
+  constructor(symbol: string, price: number, volume: number, timestamp: Date) {
+    this.symbol = symbol;
+    this.price = price;
+    this.volume = volume;
+    this.timeStamp = timestamp;
+  }
+}
+
 
 
  

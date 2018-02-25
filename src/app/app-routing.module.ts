@@ -6,7 +6,7 @@ import { TermComponent } from './term/term.component';
 import { InfoComponent } from './info/info.component';
 import { InsideTradeComponent } from './inside-trade/inside-trade.component';
 import { LoginComponent } from './login/login.component';
-
+import {PortfolioComponent} from "./portfolio/portfolio.component";
 const routes: Routes = [
   {path: '', redirectTo: 'home/1067983/o', pathMatch: 'full' },
   {path: 'home', redirectTo: 'home/1067983/o', pathMatch: 'full' },
@@ -15,6 +15,7 @@ const routes: Routes = [
   {path: 'security/:cusip', component: SecurityGuruComponent, pathMatch: 'full' },
   { path: 'security/:cusip/:issuer', component: SecurityGuruComponent, pathMatch: 'full' },
   { path: 'insideTrades', component: InsideTradeComponent },
+  { path: 'portfolio', component: PortfolioComponent },
   {path: 'term', component: TermComponent },
   { path: 'info', component: InfoComponent },
   { path: 'login', component: LoginComponent }

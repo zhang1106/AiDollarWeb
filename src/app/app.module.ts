@@ -16,6 +16,7 @@ import { GuruDetailComponent } from './home/guru-detail/guru-detail.component';
 import { InsideTradeComponent } from './inside-trade/inside-trade.component';
 import { LoginComponent } from './login/login.component';
 import { LocalStorageModule } from 'angular-2-local-storage';
+import {PortfolioComponent} from "./portfolio/portfolio.component";
 
 @NgModule({
   declarations: [
@@ -27,6 +28,7 @@ import { LocalStorageModule } from 'angular-2-local-storage';
     GuruDetailComponent,
     InsideTradeComponent,
     LoginComponent,
+    PortfolioComponent,
   ],
   imports: [
     BrowserModule,

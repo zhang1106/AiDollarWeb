@@ -1,16 +1,24 @@
 ﻿import { Injectable } from '@angular/core';
 import { LocalStorageService } from 'angular-2-local-storage';
-import { Trade , Position} from './portfolio';
-
+import { Trade, Position ,Quote} from './portfolio';
+import { AiDataService } from './ai-data.service';
+//Alpha Vantage Key:LLAX4346OCJU5UF2
 @Injectable()
 export class PortfolioService {
 
   myPorfolioTrades = "MyPortfolio-Trades";
   myPortfolioPositions = "MyPortfolio-Positions";
 
-  constructor(private localStorageService: LocalStorageService) { }
+  constructor(private localStorageService: LocalStorageService, private dataService:AiDataService) { }
 
- 
+  GetMyPortfoio() {
+    var positions = this.localStorageService.get(this.myPortfolioPositions);
+    if (positions == null) {
+      positions = {};
+    };
+    return positions;
+  }
+
   UpdatePostion(trade: Trade) {
     var positions = this.localStorageService.get(this.myPortfolioPositions);
     if (positions == null) {
@@ -31,12 +39,33 @@ export class PortfolioService {
     this.localStorageService.set(this.myPortfolioPositions, positions);
   }
 
-  GetPrice(ticker: string) {
-    return 100;
+  
+  GetPrices(json: any) {
+    var prices = {};
+    var quotes = json["Stock Quotes"];
+    for (let i = 0; i < quotes.length; i++) {
+      var quote = quotes[i];
+      var sym = quote["1. symbol"];
+      var price = quote["2. price"];
+      var timestamp = quote["4. timestamp"]
+      prices[sym] = new Quote(sym, price, 0, timestamp);
+    }
+    return prices;
   }
 
-  Add(ticker: string) {
-    let trade: Trade = new Trade(ticker, 1000, this.GetPrice(ticker), new Date());
+  AddToPortfolio(ticker: string) {
+    this.dataService.getQuote(ticker).subscribe(json => {
+      var prices = this.GetPrices(json);
+      var price = prices[ticker].price;
+      if (price == null) price = 1;
+
+      this.Add(ticker, price);
+    });
+  }
+
+  Add(ticker: string, price:number) {
+     
+    let trade: Trade = new Trade(ticker, 1000, price, new Date());
     var trades = this.localStorageService.get(this.myPorfolioTrades);
 
     if (trades == null) {

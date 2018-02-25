@@ -64,7 +64,7 @@ export class SecurityGuruComponent implements OnInit {
 
   AddToMyPortfolio() {
     console.log(this.Ticker);
-    this._portfolioServive.Add(this.Ticker);
+    this._portfolioServive.AddToPortfolio(this.Ticker);
   }
 
 }
