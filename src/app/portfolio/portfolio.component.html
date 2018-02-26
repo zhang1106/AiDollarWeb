@@ -9,17 +9,34 @@
           <th>Symbol</th>
           <th>Shares</th>
           <th>Cost</th>
-           
+          <th>Market Value</th>
+          <th>PnL</th>
+          <th></th>
+          <th></th>
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let p of  MyPositions">
-          <td>{{p.Ticker}}</td>
-          <td>{{p.Shares | number:'.0'}}</td>
-          <td>{{p.Cost | number:'.2'}}</td>
-           
-        </tr>
+      <tr *ngFor="let p of  MyPositions">
+        <td>{{p.Ticker}}</td>
+        <td>{{p.Shares | number:'.0'}}</td>
+        <td>{{p.Cost | number:'.2'}}</td>
+        <td>{{p.MarketVal | number:'.2'}}</td>
+        <td>{{p.PnL | number:'.2'}}</td>
+        <td (click)="AddToPortfolio(p.Ticker, 1000)">Buy More</td>
+        <td (click)="AddToPortfolio(p.Ticker, -1000)">Sell More</td>
+      </tr>
       </tbody>
+      <tfoot>
+      <tr>
+        <td></td>
+        <td>Subtotal</td>
+        <td>{{SumCost | number:'.2'}}</td>
+        <td>{{SumMarketVal | number:'.2'}}</td>
+        <td>{{SumPnL | number:'.2'}}</td>
+        <td></td>
+        <td></td>
+      </tr>
+      </tfoot>
     </table>
 
   </section>

@@ -46,6 +46,8 @@ export class Position {
   Ticker: string;
   Shares: number;
   Cost: number;
+  MarketVal: number;
+  PnL:number;
   Date: Date;
 
   constructor(ticker: string, shares: number, cost: number, date: Date) {

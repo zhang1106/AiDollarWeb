@@ -40,7 +40,7 @@ export class PortfolioService {
   }
 
   
-  GetPrices(json: any) {
+  GetQuotes(json: any) {
     var prices = {};
     var quotes = json["Stock Quotes"];
     for (let i = 0; i < quotes.length; i++) {
@@ -53,19 +53,19 @@ export class PortfolioService {
     return prices;
   }
 
-  AddToPortfolio(ticker: string) {
+  AddToPortfolio(ticker: string, shares:number) {
     this.dataService.getQuote(ticker).subscribe(json => {
-      var prices = this.GetPrices(json);
+      var prices = this.GetQuotes(json);
       var price = prices[ticker].price;
       if (price == null) price = 1;
 
-      this.Add(ticker, price);
+      this.Add(ticker, price, shares);
     });
   }
 
-  Add(ticker: string, price:number) {
+  Add(ticker: string, price:number, shares:number) {
      
-    let trade: Trade = new Trade(ticker, 1000, price, new Date());
+    let trade: Trade = new Trade(ticker, shares, price, new Date());
     var trades = this.localStorageService.get(this.myPorfolioTrades);
 
     if (trades == null) {
