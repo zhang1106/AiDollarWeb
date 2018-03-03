@@ -28,12 +28,12 @@ section {
 }
 
 .rightside {
-  background-color: #f8f9fa !important;
+  background-color: white !important;
   bottom: -1px;
 }
 
 aside {
-  background-color: #f8f9fa !important;
+  background-color: white !important;
   text-align: center;
   padding-top: 10px;
 }

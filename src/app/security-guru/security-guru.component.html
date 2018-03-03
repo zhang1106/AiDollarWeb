@@ -1,44 +1,51 @@
 ﻿<div class="row">
-  <aside class="col-sm-4 col-lg-4">
-    <h6 class="range-title">Stocks Owned By Guru</h6>
+  <aside class="col-sm-1 col-lg-1"></aside>
+  <section class="col-sm-10 col-lg-10">
+    <h3 class="range-title">Stocks Owned By Most Guru</h3>
     <table class="table table-striped, table-bordered">
       <tbody>
-      <tr *ngFor="let s of Securities">
-        <td class="guru btn-info" (click)="ShowDetail(s.Cusip, s.Issuer,s.Ticker)"> {{s.Issuer}}</td>
+      <tr >
+        <td>
+           <button (click)="ShowDetail(s.Cusip, s.Issuer,s.Ticker)" *ngFor="let s of Securities" class="btn btn-link"
+               title="{{s.Issuer}}"> {{s.Ticker}}</button> 
+        </td>
       </tr>
       </tbody>
     </table>
-  </aside>
-  <section class="col-sm-8 col-lg-8">
-    <table class="table table-striped, table-bordered">
-      <tr>
-        <td><h5 ng-if="Issuer">{{Issuer}}-{{Ticker}}</h5></td>
-        <td class="guru btn-info" (click)="AddToMyPortfolio()">Add to My Portfolio</td>
-      </tr>
+     
       
+    <table class="table table-striped, table-bordered, table-sm">
+      <thead>
+      <tr>
+        <td>
+          <h5 ng-if="Issuer">{{Issuer}}-{{Ticker}} </h5>  
+        </td>
+        <td><button (click)="AddToMyPortfolio()">Add to My Portfolio</button></td>
+        <td colspan="4"></td>
+      </tr>
+      <tr>
+        <th>Fund</th>
+        <th>Q+4</th>
+        <th>Q+3</th>
+        <th>Q+2</th>
+        <th>Q+1</th>
+        <th>Rencent</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let hold of SecurityHolding.Holding">
+        <td><a routerLink="/home/{{hold.Cik}}/o" title="Guru's holding">{{hold.Owner}}</a></td>
+        <td>{{hold.Q4 | number:'.0'}}</td>
+        <td [ngClass]="{'red':hold.Q3<hold.Q4, 'green' :hold.Q3>hold.Q4}">{{hold.Q3 | number:'.0'}}</td>
+        <td [ngClass]="{'red':hold.Q2<hold.Q3, 'green' :hold.Q2>hold.Q3}">{{hold.Q2 | number:'.0'}}</td>
+        <td [ngClass]="{'red':hold.Q1<hold.Q2, 'green' :hold.Q1>hold.Q2}">{{hold.Q1 | number:'.0'}}</td>
+        <td [ngClass]="{'red':hold.Recent<hold.Q1, 'green' :hold.Recent>hold.Q1}">{{hold.Recent | number:'.0'}}</td>
+      </tr>
+      </tbody>
     </table>
-      <table class="table table-striped, table-bordered">
-        <thead>
-          <tr>
-            <th>Fund</th>
-            <th>Q+4</th>
-            <th>Q+3</th>
-            <th>Q+2</th>
-            <th>Q+1</th>
-            <th>Rencent</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr *ngFor="let hold of SecurityHolding.Holding">
-            <td><a routerLink="/home/{{hold.Cik}}/o" title="Guru's holding">{{hold.Owner}}</a></td>
-            <td>{{hold.Q4 | number:'.0'}}</td>
-            <td [ngClass]="{'red':hold.Q3<hold.Q4, 'green' :hold.Q3>hold.Q4}">{{hold.Q3 | number:'.0'}}</td>
-            <td [ngClass]="{'red':hold.Q2<hold.Q3, 'green' :hold.Q2>hold.Q3}">{{hold.Q2 | number:'.0'}}</td>
-            <td [ngClass]="{'red':hold.Q1<hold.Q2, 'green' :hold.Q1>hold.Q2}">{{hold.Q1 | number:'.0'}}</td>
-            <td [ngClass]="{'red':hold.Recent<hold.Q1, 'green' :hold.Recent>hold.Q1}">{{hold.Recent | number:'.0'}}</td>
-          </tr>
-        </tbody>
-      </table>
 
-</section>
+  </section>
+  <aside class="col-sm-2 col-lg-2">
+   
+  </aside>
 </div>
