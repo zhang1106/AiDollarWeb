@@ -61,16 +61,33 @@ export class Position {
 export class QuoteByTicker {
   [Ticker:string]:Quote;
 }
+
 export class Quote {
   symbol: string;
   price: number;
   volume: number;
   timeStamp: Date;
+
   constructor(symbol: string, price: number, volume: number, timestamp: Date) {
     this.symbol = symbol;
     this.price = price;
     this.volume = volume;
     this.timeStamp = timestamp;
+  }
+}
+
+export class AiPortfolio
+{
+  MyPositions: any;
+  SumCost: number;
+  SumMarketVal: number;
+  SumPnL: number;
+
+  constructor(myPosition: any, sumCost: number, sumMarketVal: number, sumPnl: number) {
+    this.MyPositions = myPosition;
+    this.SumCost = sumCost;
+    this.SumMarketVal = sumMarketVal;
+    this.SumPnL = sumPnl;
   }
 }
 

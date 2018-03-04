@@ -5,15 +5,15 @@
       <span class="navbar-toggler-icon"></span>
     </button>
     
-    <div class="h1" style="color: goldenrod;font:">AI DOLLAR</div>
+    <div class="h3" style="color: goldenrod;" (click)="GoHome()" nowrap="nowrap">AI DOLLAR</div>
 
     <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
       <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
         <li class="nav-item active">
-          <a class="nav-link" routerLink="/home" routerLinkActive="active">Guru's 13F</a>
+          <a class="nav-link" routerLink="/security" routerLinkActive="active">Follow Guru</a>
         </li>
         <li class="nav-item active">
-          <a class="nav-link" routerLink="/security" routerLinkActive="active">Stock By Guru</a>
+          <a class="nav-link" routerLink="/home" routerLinkActive="active">Guru's Position</a>
         </li>
         <li class="nav-item active">
           <a class="nav-link" routerLink="/insideTrades" routerLinkActive="active">Inside Trades</a>
@@ -21,12 +21,12 @@
         <li class="nav-item active">
           <a class="nav-link" routerLink="/portfolio" routerLinkActive="active">AI Portfolio</a>
         </li>
-        <li><a  class="nav-link" routerLink="/term" routerLinkActive="active">Terms</a></li>
-        <li>  <address>
-                  <a class="nav-link" href="mailto:quoteaidollar@gmail.com">Contact US</a>
-             </address>
+        <li><a class="nav-link" routerLink="/term" routerLinkActive="active">Terms</a></li>
+        <li> <address>
+            <a class="nav-link" href="mailto:quoteaidollar@gmail.com">Contact US</a>
+          </address>
         </li>
-        
+
       </ul>
       <form class="form-inline my-2 my-lg-0">
         <input class="form-control mr-sm-2" [(ngModel)]="Email" name="email" type="text" placeholder="email" aria-label="email">

@@ -8,7 +8,7 @@ import { InsideTradeComponent } from './inside-trade/inside-trade.component';
 import { LoginComponent } from './login/login.component';
 import {PortfolioComponent} from "./portfolio/portfolio.component";
 const routes: Routes = [
-  {path: '', redirectTo: 'home/1067983/o', pathMatch: 'full' },
+  { path: '', redirectTo: 'security/037833100', pathMatch: 'full' },
   {path: 'home', redirectTo: 'home/1067983/o', pathMatch: 'full' },
   {path: 'home/:cik/:o', component: HomeComponent, pathMatch: 'full' },
   {path: 'security', redirectTo: 'security/037833100', pathMatch: 'full' },

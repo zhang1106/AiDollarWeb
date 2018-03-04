@@ -1,6 +1,6 @@
 ﻿import { Injectable } from '@angular/core';
 import { LocalStorageService } from 'angular-2-local-storage';
-import { Trade, Position ,Quote} from './portfolio';
+import { Trade, Position , AiPortfolio} from './portfolio';
 import { AiDataService } from './ai-data.service';
 //Alpha Vantage Key:LLAX4346OCJU5UF2
 @Injectable()
@@ -38,29 +38,12 @@ export class PortfolioService {
     }
     this.localStorageService.set(this.myPortfolioPositions, positions);
   }
-
   
-  GetQuotes(json: any) {
-    var prices = {};
-    var quotes = json["Stock Quotes"];
-    for (let i = 0; i < quotes.length; i++) {
-      var quote = quotes[i];
-      var sym = quote["1. symbol"];
-      var price = quote["2. price"];
-      var timestamp = quote["4. timestamp"]
-      prices[sym] = new Quote(sym, price, 0, timestamp);
-    }
-    return prices;
-  }
-
   AddToPortfolio(ticker: string, shares:number) {
-    this.dataService.getQuote(ticker).subscribe(json => {
-      var prices = this.GetQuotes(json);
-      var price = prices[ticker].price;
+      var quotes = this.dataService.getQuotes(); 
+      var price = quotes[ticker].price;
       if (price == null) price = 1;
-
       this.Add(ticker, price, shares);
-    });
   }
 
   Add(ticker: string, price:number, shares:number) {
@@ -84,5 +67,32 @@ export class PortfolioService {
     
     this.localStorageService.set(this.myPorfolioTrades, trades);
     this.UpdatePostion(trade);
+  }
+
+  GetAiPortfolio():AiPortfolio {
+    var myPositions = [];
+    var sumCost = 0;
+    var sumMarketVal = 0;
+    var sumPnL = 0;
+    var positions = this.GetMyPortfoio();
+    var quotes = this.dataService.getQuotes();
+
+    for (var prop in positions) {
+      var p = positions[prop];
+      //console.log(p.Ticker + " " + p.Shares);
+      //console.log(quotes[prop]);
+      var price = quotes[prop].price;
+      if (price == null) price = 1;
+      p.MarketVal = price * p.Shares;
+      p.PnL = p.MarketVal - p.Cost;
+      p.Date = price.Date;
+      //
+      sumCost += p.Cost;
+      sumMarketVal += p.MarketVal;
+      sumPnL += p.PnL;
+      //
+      myPositions.push(p);
+    }
+    return new AiPortfolio(myPositions, sumCost, sumMarketVal, sumPnL);
   }
 }
