@@ -3,44 +3,67 @@
   <section class="col-sm-6 col-lg-6">
 
   <h5>AI Portfolio</h5>
-  <table class="table table-striped, table-bordered,table-sm">
-    <thead>
+    <table class="table table-striped, table-bordered,table-sm">
+      <thead>
       <tr>
         <th>Symbol</th>
         <th>Shares</th>
         <th>Cost</th>
         <th nowrap="nowrap">Market Value</th>
         <th>PnL</th>
+        <th>PnL Ratio</th>
         <th> Buy More</th>
         <th> Sell More </th>
         <th></th>
       </tr>
-    </thead>
-    <tbody>
+      </thead>
+      <tbody>
       <tr *ngFor="let p of MyPositions">
         <td>{{p.Ticker}}</td>
         <td>{{p.Shares | number:'.0'}}</td>
         <td>{{p.Cost | number:'.2'}}</td>
         <td>{{p.MarketVal | number:'.2'}}</td>
         <td [ngClass]="{'red':p.PnL<0, 'green' :p.PnL>0}">{{p.PnL | number:'.2'}}</td>
+        <td [ngClass]="{'red':p.PnL<0, 'green' :p.PnL>0}">{{p.PnL*100/p.Cost | number:'.2'}}%</td>
         <td><button (click)="AddToPortfolio(p.Ticker, 1000)" class="btn btn-info">Buy More</button></td>
         <td><button (click)="AddToPortfolio(p.Ticker, -1000)" class="btn btn-info">Sell More</button></td>
         <td></td>
       </tr>
-    </tbody>
-    <tfoot>
+      </tbody>
+      <tfoot>
       <tr>
         <td></td>
         <td>Subtotal</td>
         <td>{{SumCost | number:'.2'}}</td>
         <td>{{SumMarketVal | number:'.2'}}</td>
         <td [ngClass]="{'red':SumPnL<0, 'green' :SumPnL>0}">{{SumPnL | number:'.2'}}</td>
-        <td></td>
+        <td [ngClass]="{'red':SumPnL<0, 'green' :SumPnL>0}">{{SumPnL*100/SumCost | number:'.2'}}%</td>
         <td></td>
         <td></td>
       </tr>
-    </tfoot>
-  </table>
-< <aside class="col-sm-3 col-lg-3"></aside>
+      </tfoot>
+    </table>
+    <h5>Portfolio Related Transactions</h5>
+    <table class="table table-striped, table-bordered,table-sm">
+      <thead>
+      <tr>
+        <th>Symbol</th>
+        <th>Shares</th>
+        <th>Price</th>
+        <th>Date</th>
+        
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let t of MyTransactions">
+        <td>{{t.Ticker}}</td>
+        <td>{{t.Shares | number:'.0'}}</td>
+        <td>{{t.Price | number:'.2'}}</td>
+        <td>{{t.TradeDate | date:'MM/dd/yyyy'}}</td>
+      </tr>
+      </tbody>
+       
+    </table>
+  <aside class="col-sm-3 col-lg-3"></aside>
   </section>
 </div>

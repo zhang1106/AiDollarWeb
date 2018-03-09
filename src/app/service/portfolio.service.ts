@@ -69,6 +69,11 @@ export class PortfolioService {
     this.UpdatePostion(trade);
   }
 
+  GetTredes() {
+    var trades = this.localStorageService.get(this.myPorfolioTrades);
+    return trades;
+  }
+
   GetAiPortfolio():AiPortfolio {
     var myPositions = [];
     var sumCost = 0;

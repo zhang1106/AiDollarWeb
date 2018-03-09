@@ -3,9 +3,11 @@
     "",
     "\\src",
     "\\src\\app",
-    "\\src\\app\\login",
-    "\\src\\app\\service"
+    "\\src\\app\\home\\guru-detail",
+    "\\src\\app\\portfolio",
+    "\\src\\app\\service",
+    "\\src\\app\\term"
   ],
-  "SelectedNode": "\\src\\app\\service\\auth-service.service.ts",
+  "SelectedNode": "\\src\\app\\portfolio\\portfolio.component.html",
   "PreviewInSolutionExplorer": false
 }
