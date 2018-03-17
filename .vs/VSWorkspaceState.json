@@ -3,11 +3,8 @@
     "",
     "\\src",
     "\\src\\app",
-    "\\src\\app\\home\\guru-detail",
-    "\\src\\app\\portfolio",
-    "\\src\\app\\service",
     "\\src\\app\\term"
   ],
-  "SelectedNode": "\\src\\app\\portfolio\\portfolio.component.html",
+  "SelectedNode": "\\src\\app\\app.component.html",
   "PreviewInSolutionExplorer": false
 }

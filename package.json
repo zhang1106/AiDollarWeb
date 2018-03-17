@@ -25,6 +25,7 @@
     "angular-2-local-storage": "^1.0.1",
     "angular2-auth": "^0.1.7",
     "angular2-cookie": "^1.2.6",
+    "angular2-froala-wysiwyg": "^2.6.0",
     "bootstrap": "4.0.0-beta",
     "core-js": "^2.4.1",
     "jquery": "^3.2.1",

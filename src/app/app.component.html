@@ -1,42 +1,37 @@
 ﻿<!--The content below is only a placeholder and can be replaced.-->
 <header>
   <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #001F3F;">
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    
-    <div class="h3" style="color: goldenrod;" (click)="GoHome()" nowrap="nowrap">AI DOLLAR</div>
-
-    <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
-      <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-        <li class="nav-item active">
-          <a class="nav-link" routerLink="/security" routerLinkActive="active">Follow Guru</a>
-        </li>
-        <li class="nav-item active">
-          <a class="nav-link" routerLink="/home" routerLinkActive="active">Guru's Portfolio</a>
-        </li>
-        <li class="nav-item active">
-          <a class="nav-link" routerLink="/insideTrades" routerLinkActive="active">Inside Trades</a>
-        </li>
-        <li class="nav-item active">
-          <a class="nav-link" routerLink="/portfolio" routerLinkActive="active">AI Portfolio</a>
-        </li>
-        <li><a class="nav-link" routerLink="/term" routerLinkActive="active">Terms</a></li>
-        <li> <address>
-            <a class="nav-link" href="mailto:quoteaidollar@gmail.com">Contact US</a>
-          </address>
-        </li>
-
-      </ul>
-      <form class="form-inline my-2 my-lg-0">
-        <input class="form-control mr-sm-2" [(ngModel)]="Email" name="email" type="text" placeholder="email" aria-label="email">
-        <input class="form-control mr-sm-2" [(ngModel)]="Password" name="password" type="text" placeholder="password" aria-label="password">
-        <button class="btn btn-outline-success my-2 my-sm-0" type="submit" (click)="SignIn()">Sign In</button>
-      </form>
-    </div>
-  </nav>
+  <a class="navbar-brand" style="color: goldenrod; " (click)="GoHome()" href="#">Ai Dollar</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item ">
+        <a class="nav-link" routerLink="/security" >Invest</a>
+      </li>
+      <li class="nav-item ">
+        <a class="nav-link" routerLink="/guru" >Gurus</a>
+      </li>
+      <li class="nav-item ">
+        <a class="nav-link" routerLink="/insideTrades" >Insiders</a>
+      </li>
+      <li class="nav-item ">
+        <a class="nav-link" routerLink="/portfolio" >Ai Portfolio</a>
+      </li>
+      <li><a class="nav-link" routerLink="/term" >Terms</a></li>
+      <li>  
+          <a class="nav-link" href="mailto:quoteaidollar@gmail.com">Contact</a>
+      </li>
+    </ul>
+    <form class="form-inline my-2 my-lg-0">
+      <input class="form-control mr-sm-2" [(ngModel)]="Email" name="email" type="text" placeholder="email" aria-label="email">
+      <input class="form-control mr-sm-2" [(ngModel)]="Password" name="password" type="text" placeholder="password" aria-label="password">
+      <button class="btn btn-outline-success my-2 my-sm-0" type="submit" (click)="SignIn()">Sign In</button>
+    </form>
+  </div>
+    </nav>
 </header>
-
 <div class="container-fluid push  ">
   <div class="row">
     <router-outlet></router-outlet>

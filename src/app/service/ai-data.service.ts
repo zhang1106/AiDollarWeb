@@ -42,8 +42,10 @@ export class AiDataService {
       this.getRemoteQuotes(tickers).subscribe(json => {
           console.log("Get All Quotes");
           var quotes = this.convertToQuotes(json);
-          this.localStorageService.set(this._portfolioQuotes, quotes);
-          this.localStorageService.set(this._quotedDate, date);
+          if (quotes["AAPL"].price != 0) {
+            this.localStorageService.set(this._portfolioQuotes, quotes);
+            this.localStorageService.set(this._quotedDate, date);
+          }
         }
       );
     });
