@@ -1,7 +1,8 @@
 ﻿import { Component, OnInit } from '@angular/core';
 import { PortfolioService } from "../service/portfolio.service";
 import { AiDataService } from '../service/ai-data.service';
-import {Trade} from "../service/portfolio";
+import { Trade } from "../service/portfolio";
+import { ActivatedRoute, Params } from '@angular/router';
 
 @Component({
   selector: 'ai-portfolio',
@@ -16,18 +17,30 @@ export class PortfolioComponent implements OnInit {
   SumMarketVal: number;
   SumPnL: number;
   MyTransactions: Trade[];
+  Portfolio:string;
 
-  constructor(private _portfolioSvc: PortfolioService, private _aiService: AiDataService) {
+  constructor(private _portfolioSvc: PortfolioService, private _aiService: AiDataService, private activatedRoute: ActivatedRoute) {
   }
 
   ngOnInit() {
-    this.GetAiPortfolio();
-    this.GetTransactions();
+    this.MyPositions = [];
+    this.MyTransactions = [];
+
+    this.activatedRoute.url.subscribe(() => {
+      this.Portfolio = this._portfolioSvc.GuruTrackPositions;
+
+      this.activatedRoute.params.subscribe((params: Params) => {
+        if (params['p']) this.Portfolio = params['p'];
+      });
+ 
+      this.GetAiPortfolio();
+      this.GetTransactions();
+    });
   }
 
   GetTransactions() {
     this.MyTransactions = [];
-    var trades = this._portfolioSvc.GetTredes();
+    var trades = this._portfolioSvc.GetTredes(this.Portfolio);
     for (var prop in trades) {
       this.MyTransactions=this.MyTransactions.concat(trades[prop]);
     }
@@ -35,7 +48,7 @@ export class PortfolioComponent implements OnInit {
   }
 
   GetAiPortfolio() {
-    var p = this._portfolioSvc.GetAiPortfolio(); 
+    var p = this._portfolioSvc.GetAiPortfolio(this.Portfolio); 
       this.MyPositions = p.MyPositions;
       this.SumCost = p.SumCost;
       this.SumPnL = p.SumPnL;
@@ -47,7 +60,7 @@ export class PortfolioComponent implements OnInit {
       var price = quotes[ticker].price;
       if (price == null) price = 1;
 
-      this._portfolioSvc.Add(ticker, price, shares);
+      this._portfolioSvc.Add(ticker, price, shares, this.Portfolio);
       this.GetAiPortfolio();
       this.GetTransactions();
   }

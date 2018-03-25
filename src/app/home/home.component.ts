@@ -1,10 +1,8 @@
 ﻿import { Component, OnInit, OnDestroy } from '@angular/core';
-import { ActivatedRoute, Params } from '@angular/router';
+import { Router } from '@angular/router';
 import { AiDataService } from '../service/ai-data.service';
-import { IHoldIdxByCik, IHoldByCik } from '../service/portfolio';
-import { ISubscription } from 'rxjs/Subscription';
-import { IGuru } from '../service/guru';
- 
+import {ISecurity} from "../service/securityHold";
+
 @Component({
   selector: 'ai-home',
   templateUrl: './home.component.html',
@@ -14,61 +12,29 @@ import { IGuru } from '../service/guru';
 
 export class HomeComponent implements OnDestroy, OnInit {
 
-  Gurus: IGuru[];
-  Cache: IHoldIdxByCik;
-  Portfolio: IHoldByCik;
+  Securities: ISecurity[];
   ErrorMessage: string;
-  Subscription: ISubscription;
-  Cik:string;
 
-  constructor(private _aiService: AiDataService,   private activatedRoute: ActivatedRoute) {
-    this.Cik = "1067983";
-    this.Portfolio =
-    {
-      Cik: '',
-      Owner: '',
-      ReportedDate0: null,
-      ReportedDate1: null,
-      ReportedDate2: null,
-      ReportedDate3: null,
-      ReportedDate4: null,
-      Holdings:[]
-    };
+  constructor(private _aiService: AiDataService, private _router: Router) {
+   
   }
-
-
-
+  
   ngOnDestroy(): void {
-     this.Subscription.unsubscribe();
+      
   }
   
   ngOnInit() { // subscribe to router event
-    this.activatedRoute.params.subscribe((params: Params) => {
-      if (params['cik']) this.Cik = params['cik'];
-    });
-
-    this._aiService.getGurus()
+    this._aiService.getSecurities()
       .subscribe(
-      gurus => {
-          console.log("get gurus");
-          this.Gurus = gurus;
+        securities => {
+          console.log(securities.length);
+          this.Securities = securities;
         },
         error => this.ErrorMessage = error
       );
-
-      this.Subscription = this._aiService.getHoldByCik()
-        .subscribe(
-          portfolioIdx => {
-            this.Cache = portfolioIdx;
-            this.Portfolio = this.Cache[this.Cik];
-         },
-          error => this.ErrorMessage = error
-        );
-   }
-
-  ShowDetail(Cik: string): void {
-    this.Portfolio = this.Cache[Cik];
-    console.log("Container:"+this.Portfolio.Owner);
   }
-  
+
+  ShowDetail(cusip: string, issuer: string, ticker: string) {
+    this._router.navigateByUrl("/invest/" + cusip+"/"+issuer+"/"+ticker);
+  }
 }

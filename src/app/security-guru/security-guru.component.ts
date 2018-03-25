@@ -46,6 +46,7 @@ export class SecurityGuruComponent implements OnInit {
     this.activatedRoute.params.subscribe((params: Params) => {
       if (params['cusip']) this.Cusip = params['cusip'];
       if (params['issuer']) this.Issuer = params['issuer'];
+      if (params["ticker"]) this.Ticker = params['ticker'];
     });
     
     this._aiService.getHoldByCussip()
@@ -53,7 +54,6 @@ export class SecurityGuruComponent implements OnInit {
       portfolio => {
         this.SecurityHoldings = portfolio;
         this.SecurityHolding = this.SecurityHoldings[this.Cusip];
-
       },
         error => this.ErrorMessage = error
       );
@@ -81,13 +81,13 @@ export class SecurityGuruComponent implements OnInit {
       var quotes= this._aiService.getQuotes() 
       var price = quotes[this.Ticker].price;
       if (price == null) price = 1;
-      this._portfolioSvc.AddToPortfolio(this.Ticker, 1000);
+      this._portfolioSvc.AddToPortfolio(this.Ticker, 1000, this._portfolioSvc.GuruTrackPositions);
 
       this.GetMyAiPortfolio();
   }
 
   GetMyAiPortfolio() {
-      var p = this._portfolioSvc.GetAiPortfolio(); 
+      var p = this._portfolioSvc.GetAiPortfolio(this._portfolioSvc.GuruTrackPositions); 
       console.log("Get Ai Port");
       this.MyPositions = p.MyPositions;
       this.SumCost = p.SumCost;

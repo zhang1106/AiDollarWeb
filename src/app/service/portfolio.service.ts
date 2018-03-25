@@ -6,21 +6,34 @@ import { AiDataService } from './ai-data.service';
 @Injectable()
 export class PortfolioService {
 
-  myPorfolioTrades = "MyPortfolio-Trades";
-  myPortfolioPositions = "MyPortfolio-Positions";
+  GuruTrackTrades = "MyPortfolio-Trades";
+  GuruTrackPositions = "MyPortfolio-Positions";
 
-  constructor(private localStorageService: LocalStorageService, private dataService:AiDataService) { }
+  InsiderTrackTrades = "InsiderTrackPortfolio-Trades";
+  InsiderTrackPositions = "InsiderTrackPortfolio-Positions";
 
-  GetMyPortfoio() {
-    var positions = this.localStorageService.get(this.myPortfolioPositions);
+  constructor(private localStorageService: LocalStorageService, private dataService: AiDataService) { }
+
+  GetMyTradesRec(portName: string) {
+    if (portName == this.GuruTrackPositions) {
+      return this.GuruTrackTrades;
+    }
+    if (portName == this.InsiderTrackPositions) {
+      return this.InsiderTrackTrades;
+    }
+    return null;
+  }
+
+  GetMyPortfoio(portName:string) {
+    var positions = this.localStorageService.get(portName);
     if (positions == null) {
       positions = {};
     };
     return positions;
   }
 
-  UpdatePostion(trade: Trade) {
-    var positions = this.localStorageService.get(this.myPortfolioPositions);
+  UpdatePostion(trade: Trade, portName:string) {
+    var positions = this.localStorageService.get(portName);
     if (positions == null) {
       positions = {};
     };
@@ -36,25 +49,24 @@ export class PortfolioService {
         position.Cost + trade.Price * trade.Shares,
         trade.TradeDate);
     }
-    this.localStorageService.set(this.myPortfolioPositions, positions);
+    this.localStorageService.set(portName, positions);
   }
   
-  AddToPortfolio(ticker: string, shares:number) {
+  AddToPortfolio(ticker: string, shares:number, portName:string) {
       var quotes = this.dataService.getQuotes(); 
       var price = quotes[ticker].price;
       if (price == null) price = 1;
-      this.Add(ticker, price, shares);
+      this.Add(ticker, price, shares, portName);
   }
 
-  Add(ticker: string, price:number, shares:number) {
+  Add(ticker: string, price:number, shares:number,  portName:string) {
      
     let trade: Trade = new Trade(ticker, shares, price, new Date());
-    var trades = this.localStorageService.get(this.myPorfolioTrades);
+    var trades = this.localStorageService.get(this.GetMyTradesRec(portName));
 
     if (trades == null) {
       trades = {};
       trades[ticker] = [trade];
-     
     } else
     {
         var thisTrades = trades[ticker];
@@ -65,27 +77,25 @@ export class PortfolioService {
         }
     }
     
-    this.localStorageService.set(this.myPorfolioTrades, trades);
-    this.UpdatePostion(trade);
+    this.localStorageService.set(this.GetMyTradesRec(portName), trades);
+    this.UpdatePostion(trade, portName);
   }
 
-  GetTredes() {
-    var trades = this.localStorageService.get(this.myPorfolioTrades);
+  GetTredes(portName:string) {
+    var trades = this.localStorageService.get(this.GetMyTradesRec(portName));
     return trades;
   }
 
-  GetAiPortfolio():AiPortfolio {
+  GetAiPortfolio(portName):AiPortfolio {
     var myPositions = [];
     var sumCost = 0;
     var sumMarketVal = 0;
     var sumPnL = 0;
-    var positions = this.GetMyPortfoio();
+    var positions = this.GetMyPortfoio(portName);
     var quotes = this.dataService.getQuotes();
 
     for (var prop in positions) {
       var p = positions[prop];
-      //console.log(p.Ticker + " " + p.Shares);
-      //console.log(quotes[prop]);
       var price = quotes[prop].price;
       if (price == null) price = 1;
       p.MarketVal = price * p.Shares;

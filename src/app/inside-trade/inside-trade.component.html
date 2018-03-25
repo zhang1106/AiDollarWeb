@@ -15,6 +15,8 @@
       <th>Price</th>
       <th>RemainAmount</th>
       <th>TransactionDate</th>
+      <th> Buy</th>
+      <th> Sell</th>
     </tr>
     </thead>
     <tbody>
@@ -28,6 +30,8 @@
       <td>{{trade.Price | number:'.2'}}</td>
       <td>{{trade.RemainAmount | number:'.0'}}</td>
       <td>{{trade.TransactionDate}}</td>
+      <td><button (click)="AddToPortfolio(trade.Symbol, 1000)" class="btn btn-info btn-sm">Buy</button></td>
+      <td><button (click)="AddToPortfolio(trade.Symbol, -1000)" class="btn btn-info btn-sm">Sell</button></td>
     </tr>
     </tbody>
   </table>

@@ -8,20 +8,27 @@
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item ">
-        <a class="nav-link" routerLink="/security" >Invest</a>
+        <a class="nav-link" routerLink="/home">Home</a>
       </li>
       <li class="nav-item ">
-        <a class="nav-link" routerLink="/guru" >Gurus</a>
+        <a class="nav-link" routerLink="/invest">Invest</a>
       </li>
       <li class="nav-item ">
-        <a class="nav-link" routerLink="/insideTrades" >Insiders</a>
+        <a class="nav-link" routerLink="/guru">Gurus</a>
       </li>
       <li class="nav-item ">
-        <a class="nav-link" routerLink="/portfolio" >Ai Portfolio</a>
+        <a class="nav-link" routerLink="/insiders">Insiders</a>
       </li>
-      <li><a class="nav-link" routerLink="/term" >Terms</a></li>
-      <li>  
-          <a class="nav-link" href="mailto:quoteaidollar@gmail.com">Contact</a>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Ai Portfolio</a>
+        <div class="dropdown-menu">
+          <a class="dropdown-item" routerLink="/portfolio/MyPortfolio-Positions">Guru Track</a>
+          <a class="dropdown-item" routerLink="/portfolio/InsiderTrackPortfolio-Positions">Insider Track</a>
+      </div>
+      </li>
+      <li><a class="nav-link" routerLink="/term">Terms</a></li>
+      <li>
+        <a class="nav-link" href="mailto:quoteaidollar@gmail.com">Contact</a>
       </li>
     </ul>
     <form class="form-inline my-2 my-lg-0">

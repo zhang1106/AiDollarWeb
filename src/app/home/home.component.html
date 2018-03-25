@@ -1,18 +1,153 @@
 ﻿<div class="row">
   <aside class="col-sm-1 col-lg-1 rightside"></aside>
-  <section class="col-sm-10 col-lg-10">
-    
-    <h5 >Guru List</h5>
-    <table class="table table-striped, table-bordered">
-      <tbody>
-      <tr >
-        <td>
-          <button (click)="ShowDetail([guru.Cik])" *ngFor="let guru of Gurus" class="btn btn-link">{{guru.Owner}}</button>
-        </td>
-      </tr>
-      </tbody>
-    </table>
-    <ai-guru-detail [@dPortfolio]="Portfolio"></ai-guru-detail>
+  <section class="col-sm-3 col-lg-3">
+    <article>
+      <h5>Stocks held by most fundamental Gurus</h5>
+      <table class="table table-striped, table-bordered">
+        <tbody>
+        <tr >
+          <td>
+            <button (click)="ShowDetail(s.Cusip, s.Issuer,s.Ticker)" *ngFor="let s of Securities" class="btn btn-link"
+                    title="{{s.Issuer}}"> {{s.Ticker}}</button>
+          </td>
+        </tr>
+        </tbody>
+      </table>
+    </article>
+    <article>
+      <h3>Invest Like a Guru</h3>
+      <p>by Charlie Tian, Ph.D. Founder, GuruFocus.com</p>
+      <img src="https://media.wiley.com/product_data/coverImage300/69/11193623/1119362369.jpg" width="40%" height="40%" class="wrap" />
+      <p>Adopt the investment strategy that built Warren Buffett's fortune</p>
+      <p>
+        Invest Like a Guru provides an invaluable resource for high-quality-focused value investing, with expert insight and practical tools for implementation. Written by the man behind GuruFocus.com, this book expands on the site's value strategies and research tools to provide a primer for those exploring pathways to higher returns at lower risk. The book begins with an insightful explanation of high-quality-focused value investing concepts, then quickly moves into practical, detailed guidance on analysis, valuation, key factors, and risks to avoid. Case studies demonstrate real-world application of various analysis methods, and the discussion walks you through important calculations using real examples.
+        <a href="https://www.bloomberg.com/news/features/2017-12-05/how-ai-will-invade-every-corner-of-wall-street">More...</a>
+      </p>
+
+    </article>
+    <article>
+      <h5>If I Had to Buy One Stock in March, It Would Be This One</h5>
+      <p>Todd Campbell (TMFEBCapital) Mar 14, 2018 at 9:00PM
+      </p>
+      <img src="https://g.foolcdn.com/editorial/images/476234/offshore-rigs-gettyimages-515446082_large.jpg" width="40%" height="40%" class="wrap"/>
+      <p>
+        A major collaboration with ExxonMobil (NYSE:XOM) could significantly boost oil production over the next five years, and that could make it a great time to add Hess Corporation (NYSE:HES) to portfolios.
+        The upstream oil producer's shares have fallen by over 12% since early January, and recently, management doubled its share repurchase program to $1 billion to take advantage of the dip -- I believe this a top stock to buy in March.
+
+        What's going on now
+        Hess Corp is refocusing its oil and gas production portfolio toward low-cost growth and away from mature, low-growth areas, including the North Sea and Permian basin.
+        <a href="https://www.fool.com/investing/2018/03/14/if-i-had-to-buy-one-stock-in-march-it-would-be-thi.aspx">More...</a>
+      </p>
+
+    </article>
+    <article>
+      <h5>BlackRock Amps Up Stock-Picking Business With 'Quantamental' Strategy</h5>
+      <p>By James Langford</p>
+
+      <p>
+        BlackRock (BLK - Get Report) , the world's largest investment manager, is revamping its stock-picking business
+        in the U.S. as the division's new chief takes advantage of the firm's technological capabilities.
+        <a href="https://www.thestreet.com/story/14063493/1/blackrock-revamps-u-s-stock-picking-business-under-new-unit-chief.html">More...</a>
+      </p>
+
+    </article>
   </section>
+  <section class="col-sm-3 col-lg-3">
+    
+    <article>
+      <h3>What is Quantamental anyway?</h3>
+      <p>24 Jan 2017 David Weisberger</p>
+      <img src="https://cdn.ihs.com/www/blog/commentary/blog-Commentary-IMO-491461576-1265x843-post.jpg" width="40%" height="40%" class="wrap"/>
+      <p>
+        A quick search in Google shows more than 10,000 results for "quantamental" despite the fact that it is not an official word. The reason, of course, is that traditional active management has been
+        underperforming passive management, particularly when fees are accounted for, and people are therefore looking for new approaches. Quantitative managers, on the other hand, have done well versus their benchmarks in many cases and both "Big Data" and "Artificial Intelligence (AI)" generate the type of marketing buzz that buy side salespeople love. At the same time, for some investors, there is still a stigma attached to fully quantitative asset management.
+        <a href="https://ihsmarkit.com/research-analysis/24012017-in-my-opinion-what-is-quantamental-anyway.html">More...</a>
+      </p>
+
+    </article>
+    <article>
+      <h5>The Hot New Hedge Fund Flavor Is 'Quantamental'</h5>
+      <p>Ivan Levingston</p>
+      <img src="https://assets.bwbx.io/images/users/iqjWHBFdfxIU/iZPQs1bbnlzk/v0/-1x-1.jpg" width="40%" height="40%" class="wrap"/>
+      <p>
+        Fundamental and quantitative investing used to be the hedge-fund versions of oil and water: They didn’t mix.
+        Those in the fundamental camp do analysis the old-fashioned way, evaluating investments based on research and instinct,
+        with humans calling the shots. <a href="https://www.bloomberg.com/news/articles/2017-08-25/the-hot-new-hedge-fund-flavor-is-quantamental-quicktake-q-a">More...</a>
+      </p>
+
+    </article>
+    <article>
+      <h5>How AI Will Invade Every Corner of Wall Street</h5>
+      <p>By Nishant Kumar December 5, 2017, 2:00 AM EST</p>
+      <img src="https://assets.bwbx.io/images/users/iqjWHBFdfxIU/iXpElbadZDoo/v0/2000x-1.jpg" width="40%" height="40%" class="wrap"/>
+      <p>
+        It was AI versus Warren Buffett.
+        The artificial intelligence was unleashed by Winton, the London hedge fund, to test an old principle of the Berkshire Hathaway Inc. chairman with a view to trading on it: that major acquisitions usually hurt the buyers’ shareholders. Researchers collected and analyzed data on almost 9,000 U.S. deals back to the 1960s.
+        <a href="https://www.bloomberg.com/news/features/2017-12-05/how-ai-will-invade-every-corner-of-wall-street">More...</a>
+      </p>
+
+    </article>
+    <article>
+      <h5>Steven Cohen Buys Oil Company Alta Mesa Resources</h5>
+      <p>By Holly LaFon March 14, 2018T</p>
+      <img src="https://s3.amazonaws.com/gurufocus_avatar/101927_big.png?18031718" width="40%" height="40%" class="wrap"/>
+      <p>
+        Steven Cohen (Trades, Portfolio), founder of Point72 Asset Management, on Wednesday announced a purchase of 8,549,782 shares of Alta Mesa Resources (NASDAQ:AMR), an oil and gas company that formed and began public trading in February.
+
+        Cohen paid roughly $8 per share for the shares on the date of purchase, March 9, for a total value around $68.4 million. The holding gives him a 5% stake in the company. Energy is the third-largest sector represented in the investor’s portfolio at 10.8% of the 876 stocks worth $23.2 billion.
+        <a href="https://www.bloomberg.com/news/features/2017-12-05/how-ai-will-invade-every-corner-of-wall-street">More...</a>
+      </p>
+
+    </article>
+
+  </section>
+  <section class="col-sm-3 col-lg-3">
+    <article>
+      <h5>Buffett Indicator: Where Are We with Market Valuations?</h5>
+      <p>By Guru Focus</p>
+      <img src="https://www.advisorperspectives.com/images/content_image/data/14/14c31a2502fe705b066b74614d61f09a.png" width="50%" height="50%" class="wrap" />
+      <p>
+        As of today, the Total Market Index is at $ 28577.7 billion, which is about 144.8% of the last reported GDP. The US stock market is positioned for an average annualized return of -2.2%, estimated from the historical valuations of the stock market. This includes the returns from the dividends, currently yielding at 1.75%.
+        As pointed by Warren Buffett, the percentage of total market cap (TMC) relative to the US GNP is “probably the best single measure of where valuations stand at any given moment.”
+        <a href="https://www.gurufocus.com/stock-market-valuations.php">More...</a>
+      </p>
+        
+    </article>
+    <article>
+      <h5>Economic and Market Trends</h5>
+      <p>by Jill Mislinski, 3/19/18</p>
+      <img src="https://www.advisorperspectives.com/dshort/charts/e69c8358d77bbfb56875a8c8c2cc4f49aa47d24b.png" width="50%" height="50%" class="wrap" />
+      <p>
+        Two of eight indexes on our world watch list have posted gains through Monday, March 19, 2018. The top performer this year is Hong Kong's Hang Seng with a gain of 5.33%. In second is our own S&P 500 with a gain of 1.47%. Shanghai's SSE Composite is in third with a loss of 0.84%.
+        <a href="https://www.advisorperspectives.com/dshort">More...</a>
+      </p>
+        
+    </article>
+    
+    <article>
+      <h5>The Quantamental Investing Buzz</h5>
+      <p>04/04/2017 BY MICHAEL HO</p>
+      <img src="https://cdn-images-1.medium.com/max/800/0*W204wLBJfYaMb9MH.jpg" width="40%" height="40%" class="wrap"/>
+      <p>
+        Quanta-what?
+        Quantamental is not even a real word and in some circles it even feels like it has some dotcom-ish type hype. It generally implies investing based on the combination of quantitative + fundamental research. But, last week Blackrock added legitimacy to the concept by announcing they’re shifting $30 billion(11%) of fundamental assets to this style. How has an investing style that’s not actually even a real word achieved such hype and billions of dollars of investments? In an other wise dismal active equity investing landscape it’s an alluring marketing story that combines the fundamental investing style of Warren Buffett and [Hedge fund manager X during his/her glory days] with the quantitative analysis of firms like AQR, Two Sigma and Bridgewater. 1+1 = 3, right?
+        <a href="https://cdn-images-1.medium.com/max/800/0*W204wLBJfYaMb9MH.jpg">More...</a>
+      </p>
+
+    </article>
+
+
+    <article>
+      <h5>Artificial Intelligence Investing Gets Ready For Prime Time</h5>
+      <p>David Thomas , Contributor</p>
+      <img src="https://secure.gravatar.com/avatar/ec20d46de9d4a69695074697bcb6f878?s=136&d=mm&r=g" width="40%" height="40%" class="wrap"/>
+      <p>
+        Deep Learning - A subset of machine learning composed of algorithms that permit software to train itself to perform tasks. IBM Watson is an example of this. Deep learning has enabled many practical applications of machine learning and by extension the overall field of AI. Deep learning breaks down tasks in ways that makes all kinds of machine assists seem possible, even likely. Driverless cars, better preventive healthcare, even better movie recommendations, are all here today or on the horizon because of deep learning.
+        <a href="https://www.forbes.com/sites/greatspeculations/2017/10/25/getting-ready-for-prime-time-of-artificial-intelligence-investing/2/#5d378a22137a">More...</a>
+      </p>
+
+    </article>
+  </section>
+
   <aside class="col-sm-1 col-lg-1 leftside"></aside>
 </div>

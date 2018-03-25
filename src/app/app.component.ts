@@ -41,7 +41,7 @@ export class AppComponent implements OnInit {
   }
 
   GoHome() {
-    this.router.navigateByUrl("/security");
+   this.router.navigateByUrl("/home");
   }
    
 }

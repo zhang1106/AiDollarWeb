@@ -25,8 +25,8 @@
         <td>{{p.MarketVal | number:'.2'}}</td>
         <td [ngClass]="{'red':p.PnL<0, 'green' :p.PnL>0}">{{p.PnL | number:'.2'}}</td>
         <td [ngClass]="{'red':p.PnL<0, 'green' :p.PnL>0}">{{p.PnL*100/p.Cost | number:'.2'}}%</td>
-        <td><button (click)="AddToPortfolio(p.Ticker, 1000)" class="btn btn-info">Buy More</button></td>
-        <td><button (click)="AddToPortfolio(p.Ticker, -1000)" class="btn btn-info">Sell More</button></td>
+        <td><button (click)="AddToPortfolio(p.Ticker, 1000)" class="btn btn-info btn-sm">Buy More</button></td>
+        <td><button (click)="AddToPortfolio(p.Ticker, -1000)" class="btn btn-info btn-sm">Sell More</button></td>
         <td></td>
       </tr>
       </tbody>

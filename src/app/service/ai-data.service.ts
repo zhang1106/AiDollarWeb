@@ -38,16 +38,20 @@ export class AiDataService {
     }
     
     this.getSecurities().subscribe(s => {
-      var tickers = s.map(t => t.Ticker).join(",") + ",AAPL";
-      this.getRemoteQuotes(tickers).subscribe(json => {
-          console.log("Get All Quotes");
-          var quotes = this.convertToQuotes(json);
-          if (quotes["AAPL"].price != 0) {
-            this.localStorageService.set(this._portfolioQuotes, quotes);
-            this.localStorageService.set(this._quotedDate, date);
+      this.getInsideTrades().subscribe(i => {
+
+        var tickers = s.map(t => t.Ticker).join(",") + ",AAPL," + i.map(it=>it.Symbol).join(",");
+        this.getRemoteQuotes(tickers).subscribe(json => {
+            console.log("Get All Quotes");
+            var quotes = this.convertToQuotes(json);
+            if (quotes["AAPL"].price != 0) {
+              this.localStorageService.set(this._portfolioQuotes, quotes);
+              this.localStorageService.set(this._quotedDate, date);
+            }
           }
-        }
-      );
+        );
+
+      });
     });
   }
 

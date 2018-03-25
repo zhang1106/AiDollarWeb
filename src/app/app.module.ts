@@ -12,12 +12,13 @@ import { InfoComponent} from './info/info.component';
 import { SecurityGuruComponent } from './security-guru/security-guru.component';
 import { AiDataService } from './service/ai-data.service';
 import { PortfolioService } from './service/portfolio.service';
-import { GuruDetailComponent } from './home/guru-detail/guru-detail.component';
+import { GuruDetailComponent } from './guru/guru-detail/guru-detail.component';
 import { InsideTradeComponent } from './inside-trade/inside-trade.component';
 import { LoginComponent } from './login/login.component';
 import { LocalStorageModule } from 'angular-2-local-storage';
 import {PortfolioComponent} from "./portfolio/portfolio.component";
 import { GuruComponent } from './guru/guru.component';
+import { ArticleComponent } from './article/article.component';
 
 @NgModule({
   declarations: [
@@ -31,6 +32,7 @@ import { GuruComponent } from './guru/guru.component';
     LoginComponent,
     PortfolioComponent,
     GuruComponent,
+    ArticleComponent,
   ],
   imports: [
     BrowserModule,
